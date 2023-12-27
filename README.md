@@ -1,5 +1,5 @@
 ID：@631yewnd  
-QRcode：
+QRcode：  
 ![image](./images/QRCode.png)  
 
 使用方法：  
