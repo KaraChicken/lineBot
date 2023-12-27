@@ -1,6 +1,6 @@
 import axios from 'axios'
 import * as cheerio from 'cheerio'
-import beTemple from '../templates/be.js'
+import beTemplate from '../templates/be.js'
 
 export default async (event) => {
   try {
@@ -13,13 +13,13 @@ export default async (event) => {
       const imageUrl = new URL(image, 'https://wdaweb.github.io/')
       const title = $(this).find('.card-title').text().trim()
       // 產生一個新回應訊息模板
-      const template = beTemple()
+      const template = beTemplate()
       // 修改模板內容
       template.hero.url = imageUrl
       template.body.contents[0].text = title
       replies.push(template)
     })
-    event.reply({
+    const result = await event.reply({
       type: 'flex',
       altText: '後端課程',
       contents: {
@@ -27,6 +27,7 @@ export default async (event) => {
         contents: replies
       }
     })
+    console.log(result)
   } catch (error) {
     console.log(error)
   }
